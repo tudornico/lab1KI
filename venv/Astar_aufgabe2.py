@@ -36,10 +36,11 @@ def Astar_algorithm():
     firstDistance = area.distanceAB(start.x,start.y,end.x,end.y)
     current = [firstDistance,start.x,start.y]
     distance = 0
-    lines = []
+    road=[start]
     while(current[1]!= end.x and current[2] != end.y):
         previous = current
         current = NextPoint(current)
+        road.append(current) # list of objects
         distance+=area.distanceAB(current[1],current[2],previous[1],previous[2])
 
     return 1000-distance
