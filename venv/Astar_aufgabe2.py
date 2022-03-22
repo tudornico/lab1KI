@@ -23,7 +23,8 @@ def NextPoint(current):
     max = 1000
     dist = 0
     for next in seeable:
-        if(max>area.distanceAB(current[1],current[2],next[1],next[2]) + next[0] and next[0]<current[0] ):
+        if(max>area.distanceAB(current[1],current[2],next[1],next[2]) + next[0] and next[0]
+                <current[0] ):
             dist = area.distanceAB(current[1],current[2],next[1],next[2])
             max = area.distanceAB(current[1],current[2],next[1],next[2]) + next[0]
             possibleNext = next
@@ -40,6 +41,7 @@ def Astar_algorithm():
     while(current[1]!= end.x and current[2] != end.y):
         previous = current
         current = NextPoint(current)
+        print(current)
         road.append(current) # list of objects
         distance+=area.distanceAB(current[1],current[2],previous[1],previous[2])
 
@@ -51,7 +53,7 @@ def main():
     for tries in range(1,10):
         currentPoints = Astar_algorithm()
 
-        print("You've scored " + str(currentPoints) + " points this round!")
+        #print("You've scored " + str(currentPoints) + " points this round!")
         points += round(currentPoints)
     print("you've scored "+ str(points) + " points Horray!")
 
